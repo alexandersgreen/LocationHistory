@@ -279,11 +279,11 @@ main4 = do
 
 main5 :: IO ()
 main5 = do
-  --justOverlay 1000 locHis triangle "triangle.jpg"
-  --justOverlay 400 locHis triangle "triangle1024.jpg"
-  --justOverlay 15000 locHis stAlbans2 "stAlbans2.jpg"
-  --justOverlay 7500 locHis bristol2 "bristol2.jpg"
-  --justOverlay 10000 locHis innsbruck "innsbruck.jpg"
+  justOverlay 1000 locHis triangle "triangle.jpg"
+  justOverlay 400 locHis triangle "triangle1024.jpg"
+  justOverlay 15000 locHis stAlbans2 "stAlbans2.jpg"
+  justOverlay 7500 locHis bristol2 "bristol2.jpg"
+  justOverlay 10000 locHis innsbruck "innsbruck.jpg"
   justOverlay 30000 locHis cw "canarywharf.jpg"
 
 
@@ -305,9 +305,6 @@ minMax a (b,c) = (Location minLat minLon,
  maxLat = max (latitude a) (latitude c)
  minLon = min (longitude a) (longitude b)
  maxLon = max (longitude a) (longitude c)
-
-
-
 
 minJust :: Ord a => Maybe a -> Maybe a -> Maybe a
 minJust Nothing ma = ma
@@ -377,7 +374,6 @@ data Location = Location {
 instance Show Location where
  show (Location lat lon) = show lat ++ "," ++ show lon
 
-
 getPixelYCbCr8 :: DynamicImage -> Int -> Int -> PixelYCbCr8
 getPixelYCbCr8 (ImageY8    i) x y = error "ImageY8"
 getPixelYCbCr8 (ImageY16   i) x y = error "ImageY16"
@@ -437,10 +433,8 @@ scaleC :: Map Int Int -> Map Int Word8
 scaleC inm = M.fromList outl
  where outl = foldr (\(a,b) ms -> (a,maxBound - round (fromIntegral (2 ^ length ms) * (fromIntegral (maxBound :: Word8) / fromIntegral (2 ^ (size inm - 1))))):ms) [] (M.toList inm)
 
-
 main :: IO ()
 main = justViewOverlay locHis stAlbans
-
 
 justViewOverlay :: FilePath -> (Location,Location,Int,Int) -> IO ()
 justViewOverlay lh bounds = do
