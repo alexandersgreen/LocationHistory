@@ -23,16 +23,7 @@ import GHC.Float
 import Debug.Trace
 
 locHis :: FilePath
-locHis = "LocationHistory6.zip"
-
-main1 :: IO ()
-main1 = overlay "UK.jpg" locHis uk "UKoverlay.jpg"
-
-main2 :: IO ()
-main2 = overlay "southUK.jpg" locHis southUK "southUKoverlay.jpg"
-
-main3 :: IO ()
-main3 = justOverlay 250 locHis uk "UKjustOverlay.jpg"
+locHis = "LocationHistory.zip"
 
 fst :: (a,b,c,d) -> a
 fst (a,_,_,_) = a
@@ -228,6 +219,16 @@ cw :: (Location,Location,Int,Int)
 cw = (Location 51.482678 (-0.036221),
       Location 51.505423 (-0.00824),
       0,0)
+
+
+main1 :: IO ()
+main1 = overlay "UK.jpg" locHis uk "UKoverlay.jpg"
+
+main2 :: IO ()
+main2 = overlay "southUK.jpg" locHis southUK "southUKoverlay.jpg"
+
+main3 :: IO ()
+main3 = justOverlay 250 locHis uk "UKjustOverlay.jpg"
 
 main4 :: IO ()
 main4 = do
